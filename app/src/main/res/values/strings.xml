@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">TicTacToe</string>
+
+    <string name="user_name">User Name</string>
+    <string name="date_range">Date Range</string>
+    <string name="search">Search</string>
+    <string name="location">Location</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="name">Name</string>
+    <string name="add_engineer">Add User</string>
+    <string name="customer_feeds">Customer Feeds</string>
+    <string name="join">Join</string>
+    <string name="live_user_list">Live user</string>
+    <string name="menu_dashboard">Dashboard</string>
+    <string name="error_valid_email">Enter valid email address</string>
+    <string name="error_password_required">Password is required</string>
+    <string name="error_amount">Amount is required</string>
+    <string name="error_user">User Name is required</string>
+    <string name="error_name">Name address is required</string>
+    <string name="no_internet_connection_message">No internet connection</string>
+    <string name="enable_location_permission_deliveryAddress_snackbar_label">Enable Location Permission to pick your delivery Address</string>
+    <string name="msg_request_location_service">Enable Location Service To Get Current Location</string>
+</resources>

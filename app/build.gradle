@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.pani.tictactoe"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", 'REST_API', '"http://192.168.31.6:3000/api/"'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+kapt {
+    generateStubs = true
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.google.android.material:material:1.0.0'
+
+
+    // Dagger
+    implementation "com.google.dagger:dagger:${libraryVersions.dagger}"
+    implementation "com.google.dagger:dagger-android:${libraryVersions.dagger}"
+    implementation "com.google.dagger:dagger-android-support:${libraryVersions.dagger}"
+    // if you use the support libraries
+    kapt "com.google.dagger:dagger-compiler:${libraryVersions.dagger}"
+    kapt "com.google.dagger:dagger-android-processor:${libraryVersions.dagger}"
+
+
+    // Multidex
+    implementation "androidx.multidex:multidex:$libraryVersions.multidex"
+
+    // Rx bindings
+    implementation "com.jakewharton.rxbinding2:rxbinding:${libraryVersions.rxJava.rxAndroidBindings}"
+    implementation "io.reactivex.rxjava2:rxjava:${libraryVersions.rxJava.rxJava}"
+    implementation "io.reactivex.rxjava2:rxkotlin:${libraryVersions.rxJava.rxKotlin}"
+    implementation "io.reactivex.rxjava2:rxandroid:${libraryVersions.rxJava.rxAndroid}"
+    // Gson
+    implementation "com.google.code.gson:gson:$libraryVersions.gsonVersion"
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${libraryVersions.retrofit}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${libraryVersions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${libraryVersions.retrofit}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${libraryVersions.okHttp}"
+
+    implementation "com.bluelinelabs:conductor:$libraryVersions.conductor"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation "androidx.paging:paging-runtime:$libraryVersions.paging"
+    implementation "androidx.lifecycle:lifecycle-extensions:$libraryVersions.lifecycle_extensions"
+
+
+    implementation ('io.socket:socket.io-client:1.0.0') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+    }
+}
